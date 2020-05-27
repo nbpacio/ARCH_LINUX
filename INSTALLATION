@@ -15,8 +15,41 @@ https://www.youtube.com/watch?v=jLJO-PKyDAk
 
 https://wiki.learnlinux.tv/index.php/Getting_Started_with_Arch_Linux_04_-_Installing_Desktop_Environments
 
-https://www.youtube.com/watch?v=06FeTFN-Uv4   - AUTOMATED using Reflector
-
 GDM - GNOME
 
 SDDM - KDE
+
+
+AUTOMATED:
+
+https://www.youtube.com/watch?v=06FeTFN-Uv4   - AUTOMATED using Reflector and Archfi
+
+pacman -S reflector
+
+pacman -Syyy
+
+pacman -S reflector
+
+reflector -c 'United States' --sort rate --save /etc/pacman.d/mirrorlist
+
+wget archfi.sf.net/archfi
+
+sh archfi
+
+*set Language - en_US
+
+*set keyboard US - down
+
+*set disk auto partition GPT
+
+*skip enable dhcpd - since kde will use networkmanager
+
+*use trizen or yay
+
+*continue with the options then install favourite DE
+
+
+
+
+
+
