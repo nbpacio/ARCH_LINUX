@@ -96,3 +96,27 @@ Then create a symlink from /boot/System.map to point to /boot/System.map-YourKer
     $ uname -r
 
     The kernel should be updated
+    
+    
+ 24. REMOVE OLD KERNELS:
+ 
+ 
+Goto /boot/
+delete the kernel image and related files you want to remove (the version you want to remove)
+Eg:
+sudo rm -f /boot/vmlinuz-kernel_3.xxx
+sudo rm -f /boot/initrd.img-kernel_3.xxx
+
+Also remove any related modules
+sudo rm -rf /lib/modules/kernel_3.xxx
+
+Pro tip: If you have multiple kernels installed, say linux and linux-lts, by default grub-mkconfig groups them in a submenu. If you do not like this behaviour you can go back to one single menu by adding the following line to /etc/default/grub:
+GRUB_DISABLE_SUBMENU=y
+
+To rebuild grub menu run the following command.
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+Now reboot your system to see the changes in grub menu.
+    
+ 
