@@ -1,0 +1,26 @@
+VMWARE:
+
+Installation
+Install open-vm-tools. If the legacy vmhgfs shared folder module is desired, the open-vm-tools-dkmsAUR[broken link: package not found] package must be installed (the new vmhgfs-fuse driver is included in open-vm-tools). Start and/or enable vmtoolsd.service and vmware-vmblock-fuse.service.
+
+Try to install gtkmm3 manually if it does not work properly. To enable copy and paste between host and guest gtkmm3 is required.
+
+
+Additionally, to auto start vmware-tools on boot, create a new file /etc/systemd/system/vmwaretools.service:
+
+/etc/systemd/system/vmwaretools.service
+[Unit]
+Description=VMWare Tools daemon
+
+[Service]
+ExecStart=/etc/init.d/vmware-tools start
+ExecStop=/etc/init.d/vmware-tools stop
+PIDFile=/var/lock/subsys/vmware
+TimeoutSec=0
+RemainAfterExit=yes
+ 
+[Install]
+WantedBy=multi-user.target
+And enable the new systemd service:
+
+ # systemctl enable vmwaretools.service  
